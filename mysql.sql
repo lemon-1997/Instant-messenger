@@ -6,5 +6,4 @@ CREATE TABLE users
 )
 
  
-insert into users (name, password)
-    values ('001', '123');
+alter table users add column (user_cfd varchar(2));
