@@ -2,6 +2,8 @@
 #define MYSQL_H
 
 #include <QObject>
+#include <QtSql>
+#include <QSqlDatabase>
 
 class mysql : public QObject
 {

@@ -1,5 +1,3 @@
-#include <QtSql>
-#include <QSqlDatabase>
 #include <QDebug>
 #include "mysql.h"
 

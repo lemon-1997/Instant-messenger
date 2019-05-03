@@ -31,13 +31,15 @@ SOURCES += \
         mainwindow.cpp \
     mysql.cpp \
     clientwindow.cpp \
-    label_friend.cpp
+    label_friend.cpp \
+    chatwindow.cpp
 
 HEADERS += \
         mainwindow.h \
     mysql.h \
     clientwindow.h \
-    label_friend.h
+    label_friend.h \
+    chatwindow.h
 
 FORMS += \
         mainwindow.ui

@@ -78,6 +78,8 @@ void MainWindow::signup()
     {
         sql = "insert into users (user_name, user_password ,user_cfd) values ('" + name + "', '" + passwd + "','00');";
         db.queryDB(sql);
+        sql = " insert into friends (user_name )values('" + name + "');";
+        db.queryDB(sql);
         QMessageBox::information(this, "注册成功", "现在可以登陆了");
     }
 

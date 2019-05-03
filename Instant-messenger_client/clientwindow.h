@@ -15,11 +15,13 @@ public:
     QString user_name;
     QString cfd="00";
     QTcpSocket *tcpClient;
+    QString buf,send_user;
     void paintEvent(QPaintEvent *);
     void closeEvent(QCloseEvent* event);
 
 signals:
     void mainshow();
+    void recv_massage();
 
 public slots:
     void ReadData();
