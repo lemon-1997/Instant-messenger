@@ -9,6 +9,7 @@ class label_friend : public QLabel
     Q_OBJECT
 public:
     explicit label_friend(const QString& name,QWidget *parent = nullptr);
+    QString user_name;
 
 signals:
     void clicked();

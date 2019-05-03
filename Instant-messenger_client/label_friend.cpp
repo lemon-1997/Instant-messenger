@@ -3,6 +3,8 @@
 
 label_friend::label_friend(const QString& name,QWidget *parent) : QLabel(parent)
 {
+    user_name = name;
+
     QFont font;
     font.setFamily("华文新魏");
     font.setPointSize(20);

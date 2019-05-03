@@ -5,17 +5,18 @@
 #include <QTcpSocket>
 #include <QHostAddress>
 #include <QMessageBox>
+#include "mysql.h"
 
 class clientwindow : public QMainWindow
 {
     Q_OBJECT
 public:
     explicit clientwindow(const QString * name,QWidget *parent = nullptr);
-    ~clientwindow();
     QString user_name;
     QString cfd="00";
     QTcpSocket *tcpClient;
     void paintEvent(QPaintEvent *);
+    void closeEvent(QCloseEvent* event);
 
 signals:
     void mainshow();

@@ -40,15 +40,19 @@ clientwindow::clientwindow(const QString * name,QWidget *parent) : QMainWindow(p
     }
 
     connect(user,&label_friend::clicked,[=](){
-        qDebug()<<"你正在与"<<user_name<<"联通";
+        qDebug()<<"你正在与"<<user->user_name<<"联通";
     });
 }
 
-clientwindow::~clientwindow()
+
+void clientwindow::closeEvent(QCloseEvent* event)
 {
     cfd="00";
+    qDebug()<<"看这里";
+    QString sql = "update users set user_cfd = '" + cfd +"' where user_name = '"+user_name+"';";
+    mysql db;
+    db.queryDB(sql);
 }
-
 
 void clientwindow::ReadData()
 {
@@ -62,6 +66,9 @@ void clientwindow::ReadData()
                 cfd = "0" + cfd;
             }
             qDebug()<<cfd;
+            QString sql = "update users set user_cfd = '" + cfd +"' where user_name = '"+user_name+"';";
+            mysql db;
+            db.queryDB(sql);
         }
         else{
 
@@ -81,4 +88,7 @@ void clientwindow::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
     painter.drawLine(0,50,200,50);
+ //   for(int i=0;i<10;++i){
+//
+  //  }
 }

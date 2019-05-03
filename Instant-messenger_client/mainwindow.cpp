@@ -76,7 +76,7 @@ void MainWindow::signup()
     }
     else
     {
-        sql = "insert into users (user_name, user_password) values ('" + name + "', '" + passwd + "');";
+        sql = "insert into users (user_name, user_password ,user_cfd) values ('" + name + "', '" + passwd + "','00');";
         db.queryDB(sql);
         QMessageBox::information(this, "注册成功", "现在可以登陆了");
     }
