@@ -29,11 +29,15 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    mysql.cpp
+    mysql.cpp \
+    clientwindow.cpp \
+    label_friend.cpp
 
 HEADERS += \
         mainwindow.h \
-    mysql.h
+    mysql.h \
+    clientwindow.h \
+    label_friend.h
 
 FORMS += \
         mainwindow.ui

@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "mysql.h"
+#include "clientwindow.h"
 #include <QDebug>
 #include <QPushButton>
 #include <QMessageBox>
@@ -30,14 +31,26 @@ void MainWindow::logined()
     QString passwd = ui->lineEdit_password->text();
     QString sql = "select user_name, user_password from users where user_name = '" + name + "'and user_password ='" + passwd + "'";
     mysql db;
+
+    clientwindow * client = new clientwindow(&name);
+    connect(client,&clientwindow::mainshow,[=](){
+        this->show();
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("飞讯");
+        msgBox.setText( "登陆失败, 网络没有联通");
+        msgBox.exec();
+    });
+
     if( db.queryDB(sql) )
-    {
-        qDebug()<<"login sucess";
+    {  
+        this->hide();
+        client->show();
     }
     else
     {
         QMessageBox::information(this, "登陆失败", "用户名或密码错误");
     }
+
 
 }
 
