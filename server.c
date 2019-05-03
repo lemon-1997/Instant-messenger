@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include <sys/socket.h>
 #include <ctype.h>
@@ -45,8 +46,8 @@ int main(int argc,char * argv[])
 				temp.events = EPOLLIN;
 				temp.data.fd = cfd;     
 				epoll_ctl(efd, EPOLL_CTL_ADD, cfd, &temp);
-				sprintf(buf,"cfd=%d",cfd);
-				write(cfd,buf,10);
+				sprintf(buf,"%d",cfd);
+				write(cfd,buf,strlen(buf));
 			}
 			else
 			{
@@ -58,13 +59,14 @@ int main(int argc,char * argv[])
 				else{
 					char confd[2];
 					int send_fd;
-					confd[0] = buf[n-2];
-					confd[1] = buf[n-1];
+					confd[0] = buf[n-4];
+					confd[1] = buf[n-3];
 					send_fd = atoi(confd);
-					for (j = 0; j < n-2; j++){
+					for (j = 0; j < n-4; j++){
 						buf[j] = toupper(buf[j]);
 					}
-					write(send_fd, buf, n-2); 
+					write(send_fd, buf, n); 
+					write(STDOUT_FILENO,buf,n);
 				}
 			}
 		}
