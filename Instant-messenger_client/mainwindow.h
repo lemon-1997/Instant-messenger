@@ -20,6 +20,7 @@ private:
 
 public slots:
     void logined();
+    void signup();
 };
 
 #endif // MAINWINDOW_H
