@@ -1,7 +1,7 @@
 这是一款即时通讯软件
 
 
-软件优酷视频地址上传中
+软件优酷视频地址：https://v.youku.com/v_show/id_XNDIzMTI5NjA1Ng==.html?spm=a2h3j.8428770.3416059.1
 
 
 2019.5.2 开始编程
