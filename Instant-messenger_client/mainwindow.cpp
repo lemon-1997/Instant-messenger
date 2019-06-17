@@ -15,6 +15,12 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setWindowTitle("飞讯");
     this->setFixedSize(window_x,window_y);
 
+    QPalette palette;
+    QPixmap pixmap(":/background");
+    pixmap=pixmap.scaled(window_x,window_y);
+    palette.setBrush(this->backgroundRole(), QBrush(pixmap));
+    this->setPalette(palette);
+
     connect(ui->pushButton_login,SIGNAL(clicked()),this,SLOT(logined()));
     connect(ui->pushButton_signup,SIGNAL(clicked()),this,SLOT(signup()));
 

@@ -56,9 +56,15 @@ clientwindow::clientwindow(const QString * name,QWidget *parent) : QMainWindow(p
                     tcpClient->write(data.toLatin1());
                 }
             });
+
             connect(friends,&label_friend::clicked,[=](){
                 qDebug()<<"你正在与"<<friends->user_name<<"联通";
+                friends->setStyleSheet("background-color:#EFEFEF");
                 chat->show();
+            });
+
+            connect(chat,&chatwindow::close_chat,[=](){
+                friends->setStyleSheet("background-color:#ffffff");
             });
         }
     }
@@ -70,7 +76,7 @@ clientwindow::clientwindow(const QString * name,QWidget *parent) : QMainWindow(p
     connect(tcpClient, SIGNAL(error(QAbstractSocket::SocketError)), \
             this, SLOT(ReadError(QAbstractSocket::SocketError)));
 
-    tcpClient->connectToHost("10.199.159.156", 9999);
+    tcpClient->connectToHost("10.199.159.8", 9999);
     if (tcpClient->waitForConnected(1000))  // 连接成功则进入if{}
     {
         QMessageBox msgBox;
@@ -162,4 +168,5 @@ void clientwindow::paintEvent(QPaintEvent *)
  //   for(int i=0;i<10;++i){
 //
   //  }
+
 }

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QTextEdit>
+#include <QCloseEvent>
 
 class chatwindow : public QMainWindow
 {
@@ -13,9 +14,11 @@ public:
     QString user_name;
     void get_massage(QString& buf,QString& user);
     QTextEdit * rec_win;
+    void closeEvent(QCloseEvent *event);
 
 signals:
     void send_massage();
+    void close_chat();
 
 
 public slots:
